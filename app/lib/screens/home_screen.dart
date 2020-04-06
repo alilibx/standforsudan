@@ -20,7 +20,7 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    Timer.periodic(Duration(seconds: 60), (Timer t) {
+    Timer.periodic(Duration(seconds: 5), (Timer t) {
       this.getJsonDate();
     });
   }
@@ -47,47 +47,46 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: Center(
+        child: Center(
+          child: Container(
+
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 30.0),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "جملة التبرعات",
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        amount.toString(),
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      "جملة التبرعات",
+                      style: TextStyle(
+                          fontSize: 25.0, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      amount.toString(),
+                      style: TextStyle(
+                          fontSize: 25.0, fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 30.0),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "عدد المتبرعين",
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        numberofDonations.toString(),
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      "عدد المتبرعين",
+                      style: TextStyle(
+                          fontSize: 25.0, 
+                          fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    Text(
+                      numberofDonations.toString(),
+                      style: TextStyle(
+                          fontSize: 25.0, 
+                          fontWeight: FontWeight.bold
+                          ),
+                    )
+                  ],
                 ),
               ],
             ),
