@@ -25,6 +25,7 @@ dependencies:
   connectivity: ^0.4.8+2
   intl: ^0.16.1
   fluttertoast: ^4.0.1
+  font_awesome_flutter: ^8.8.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -68,7 +69,7 @@ flutter:
           - asset: assets/fonts/DINNextLTArabic-Medium.ttf
           - asset: assets/fonts/DINNextLTArabic-Regular.ttf
 
-     - family: Gotham
+     - family: Gotham Bold
        fonts:
           - asset: assets/fonts/GothamBold.ttf
 
