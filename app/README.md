@@ -1,16 +1,32 @@
-# app
+# Stand For Sudan
 
-A new Flutter project.
+This project is made as a simple payback to my most beloved country, Sudan. 
+It contains a counter for the number of donations made by the people of sudan in respond to a campaign made by the newly apointet government of Sudan after a great reveloution. these donations are meant for the aid of the health system during the current corona pandemic and also to aid the economy and thoes in need in the country. 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This projects contains two pages
+- The Main Page: which contains a counter for the number of donations and the total amount of donations in SDG.
+- The How to Page: which is an informational used as instructions of how to donate in different channels.
 
-A few resources to get you started if this is your first Flutter project:
+## Web API 
+The Counters are being fetched from Bank of Sudan - Electronic Banking Services under the below api URL: 
+  API URL:https://standforsudan.ebs-sd.com/StandForSudan/getStandForSudanStatstics
+  METHOD: HTTP GET
+  Data Type: JSON
+  DOCUMENTATION URL: https://standforsudan.ebs-sd.com/StandForSudan/developer
+  
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Credits
+- UX/UI Design Done By Wael Alsanosi => https://www.behance.net/wellyce/
+- App Development Done By Ali Alhashimi
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Official Links
+- Website: https://standforsudan.ebs-sd.com
+- Facebook Page: https://www.facebook.com/StandForSudan
+- Twitter Page: https://twitter.com/StandForSudan_
+- Official Hashtags: #StandForSudan/القومةـللسودان#
+
+
+
