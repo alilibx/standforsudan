@@ -8,14 +8,13 @@
 
 import 'package:app/styles/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:app/screens/home_page_stats_widget.dart';
 import 'package:app/styles/main_btn_style.dart';
 import 'package:app/styles/other_btn_style.dart';
 
 
 class HowToPageWidget extends StatelessWidget {
   
-  void onStatsButtonPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageStatsWidget()));
+  //void onStatsButtonPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => HomePageStatsWidget()));
   
   void onHowToButtonPressed(BuildContext context) {
   
@@ -197,7 +196,7 @@ class HowToPageWidget extends StatelessWidget {
                           height: 44,
                           child: OtherbtnstyleButton(
                             padding: EdgeInsets.all(0),
-                            onPressed: () => this.onStatsButtonPressed(context),
+                            onPressed: () {},
                             child: Text(
                               "الإحصائيات",
                               textAlign: TextAlign.left,

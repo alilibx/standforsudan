@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:app/screens/how_to_page_widget.dart';
+import 'package:app/screens/howtodonate_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/styles/colors.dart';
 import 'package:app/utils/shared.dart';
@@ -68,7 +70,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
     print("InitConnectivity : $_connectionStatus");
     checkStatusAndGetData();
     //Check every timer duration if its connected
-    Timer.periodic(Duration(seconds: 60), (Timer t) {
+    Timer.periodic(Duration(seconds: 3600), (Timer t) {
       checkStatusAndGetData();
     });
   }
@@ -109,6 +111,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
 
     return "Success";
   }
+
+  void onHowToButtonPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => HowToPageWidget()));
 
   @override
   Widget build(BuildContext context) {
@@ -269,7 +273,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('How to Donate');
+                             onHowToButtonPressed(context);
                             },
                             child: Container(
                               height: 50.0,
