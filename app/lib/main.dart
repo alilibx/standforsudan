@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(new MaterialApp(
       title: "Stand For Sudan",
-      home: DonationsScreen(),
+      home: new DonationsScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: AppColors.primaryBackground,
