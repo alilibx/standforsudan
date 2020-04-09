@@ -22,6 +22,10 @@ class Shared {
     return (screenSize(context).width - reducedBy) / dividedBy;
   }
 
+  double textSize(BuildContext context, double ratio) {
+    return screenWidth(context) / ratio;
+  }
+
   double screenHeightExcludingToolbar(BuildContext context,
       {double dividedBy = 1}) {
     return screenHeight(context,
