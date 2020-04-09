@@ -112,7 +112,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
     return "Success";
   }
 
-  void onHowToButtonPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => HowToDonate()));
+  void onHowToButtonPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => HowToPageWidget()));
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +121,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(MediaQuery.of(context).size.height / 4),
         child: AppBar(
-          flexibleSpace: HeaderWidget(title: 'الإحصائيات',),
+          flexibleSpace: HeaderWidget(),
           elevation: 0.0,
         ),
       ),
