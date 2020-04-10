@@ -16,7 +16,7 @@ class LocalStorageService {
     return _instance;
   }
 
-  dynamic _getFromDisk(String key){
+  dynamic getFromDisk(String key){
     var value = _preferences.get(key);
     print("(TRACE) LocalStorageService:_getFromDisk. key: $key valye: $value");
     return value;

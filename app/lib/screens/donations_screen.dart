@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:app/screens/how_to_page_widget.dart';
 import 'package:app/screens/howtodonate_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/styles/colors.dart';
