@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:app/screens/howtodonate_screen.dart';
+import 'package:app/widgets/faderoute.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/styles/colors.dart';
 import 'package:app/utils/shared.dart';
@@ -111,8 +112,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
     return "Success";
   }
 
-  void onHowToButtonPressed(BuildContext context) => Navigator.push(
-      context, MaterialPageRoute(builder: (context) => HowToDonate()));
+  void onHowToButtonPressed(BuildContext context) => Navigator.push(context,FadeRoute(page:HowToDonate()));
 
   @override
   Widget build(BuildContext context) {

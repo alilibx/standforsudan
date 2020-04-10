@@ -5,7 +5,7 @@ import 'package:app/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
 class HowToDonate extends StatelessWidget {
-  void onStatsButtonPressed(BuildContext context) => Navigator.push(
+  void onStatsButtonPressed(BuildContext context) => Navigator.pop(
       context, MaterialPageRoute(builder: (context) => DonationsScreen()));
 
   @override
