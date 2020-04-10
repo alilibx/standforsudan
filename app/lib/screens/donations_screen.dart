@@ -112,21 +112,16 @@ class _DonationsScreenState extends State<DonationsScreen> {
     return "Success";
   }
 
-  void onHowToButtonPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => HowToPageWidget()));
+  void onHowToButtonPressed(BuildContext context) => Navigator.push(
+      context, MaterialPageRoute(builder: (context) => HowToDonate()));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(MediaQuery.of(context).size.height / 4),
-        child: AppBar(
-          flexibleSpace: HeaderWidget(),
-          elevation: 0.0,
-        ),
-      ),
-      body: Column(
+      body: Column(        
         children: <Widget>[
+          HeaderWidget(title: 'الإحصائيات'),
           Expanded(
             child: Container(
               width: Shared().screenWidth(context),
@@ -145,7 +140,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         Text(
                           'عدد التبرعات',
                           style: TextStyle(
-                            fontSize: 28.0,
+                            fontSize: Shared().textSize(context, 13),
                             fontFamily: 'DIN Next LT Arabic',
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryText,
@@ -154,7 +149,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         Text(
                           numberofDonations,
                           style: TextStyle(
-                            fontSize: 44.0,
+                            fontSize: Shared().textSize(context, 8),
                             fontFamily: 'DIN Next LT Arabic',
                             fontWeight: FontWeight.bold,
                             color: AppColors.secondaryText,
@@ -163,7 +158,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         Text(
                           'معاملة',
                           style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: Shared().textSize(context, 18),
                             fontFamily: 'DIN Next LT Arabic',
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryText,
@@ -172,13 +167,14 @@ class _DonationsScreenState extends State<DonationsScreen> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 15.0),
+                      padding:
+                          EdgeInsets.only(top: Shared().textSize(context, 10)),
                       child: Column(
                         children: <Widget>[
                           Text(
                             'جملة التبرعات',
                             style: TextStyle(
-                              fontSize: 28.0,
+                              fontSize: Shared().textSize(context, 13),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryText,
@@ -187,7 +183,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           Text(
                             amount,
                             style: TextStyle(
-                              fontSize: 44.0,
+                              fontSize: Shared().textSize(context, 8),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.bold,
                               color: AppColors.secondaryText,
@@ -196,7 +192,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           Text(
                             'جنيه سوداني',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: Shared().textSize(context, 18),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryText,
@@ -206,7 +202,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 20.0),
+                      padding:
+                          EdgeInsets.only(top: Shared().textSize(context, 7)),
                       child: Column(
                         children: <Widget>[
                           Row(
@@ -215,7 +212,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                               Text(
                                 lastupdate,
                                 style: TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: Shared().textSize(context, 32),
                                   fontFamily: 'DIN Next LT Arabic',
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.primaryBackground,
@@ -224,7 +221,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                               Text(
                                 '  اخر تحديث',
                                 style: TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: Shared().textSize(context, 32),
                                   fontFamily: 'DIN Next LT Arabic',
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.primaryBackground,
@@ -235,7 +232,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           Text(
                             'البيانات تمثل جملة مدخلات حساب القومة للسودان و تحدث كل 60 ثانية',
                             style: TextStyle(
-                              fontSize: 12.0,
+                              fontSize: Shared().textSize(context, 32),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryBackground,
@@ -244,62 +241,69 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 25.0, vertical: 35.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            height: 50.0,
-                            width: 120.0,
-                            decoration: BoxDecoration(
-                                color: AppColors.primaryBackground,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30.0))),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'الإحصائيات',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontFamily: 'DIN Next LT Arabic',
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.accentText,
-                                ),
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                             onHowToButtonPressed(context);
-                            },
-                            child: Container(
-                              height: 50.0,
-                              width: 120.0,
-                              decoration: BoxDecoration(
-                                  color: AppColors.accentText,
-                                  border: Border.all(
-                                      color: AppColors.primaryText, width: 3.0),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30.0))),
-                              child: Padding(
-                                padding: EdgeInsets.all(5.0),
-                                child: Text(
-                                  'كيفية التبرع؟',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    fontFamily: 'DIN Next LT Arabic',
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.primaryText,
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Shared().textSize(context, 18),
+                              vertical: Shared().textSize(context, 10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                height: 50.0,
+                                width: 120.0,
+                                decoration: BoxDecoration(
+                                    color: AppColors.primaryBackground,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(30.0))),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'الإحصائيات',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: Shared().textSize(context, 22),
+                                      fontFamily: 'DIN Next LT Arabic',
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.accentText,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                              GestureDetector(
+                                onTap: () {
+                                  onHowToButtonPressed(context);
+                                },
+                                child: Container(
+                                  height: 50.0,
+                                  width: 120.0,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.accentText,
+                                      border: Border.all(
+                                          color: AppColors.primaryText,
+                                          width: 3.0),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(30.0))),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'كيفية التبرع؟',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: Shared().textSize(context, 22),
+                                        fontFamily: 'DIN Next LT Arabic',
+                                        fontWeight: FontWeight.w500,
+                                        color: AppColors.primaryText,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     )
                   ],
