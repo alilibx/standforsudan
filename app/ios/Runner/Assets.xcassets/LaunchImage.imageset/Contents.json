@@ -1,18 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "App Icon.png",
-      "idiom" : "universal",
+      "filename" : "Icon-1024.png",
+      "idiom" : "iphone",
       "scale" : "1x"
     },
     {
-      "filename" : "App Icon@2x.png",
-      "idiom" : "universal",
+      "filename" : "Icon-256.png",
+      "idiom" : "iphone",
       "scale" : "2x"
     },
     {
-      "filename" : "App Icon@3x.png",
-      "idiom" : "universal",
+      "filename" : "Icon-512.png",
+      "idiom" : "iphone",
       "scale" : "3x"
     }
   ],
