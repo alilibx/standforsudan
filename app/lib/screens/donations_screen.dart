@@ -8,7 +8,7 @@ import 'package:app/utils/shared.dart';
 import 'package:app/widgets/header_widget.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class DonationsScreen extends StatefulWidget {
@@ -40,6 +40,9 @@ class _DonationsScreenState extends State<DonationsScreen> {
         _connectionStatus = result.toString();
       });
     });
+    AlertDialog(
+        title: Text("Initstate : $_connectionStatus"),
+      );
     print("Initstate : $_connectionStatus");
   }
 
@@ -57,6 +60,9 @@ class _DonationsScreenState extends State<DonationsScreen> {
       connectionStatus = (await _connectivity.checkConnectivity()).toString();
     } on Exception catch (e) {
       print(e.toString());
+      AlertDialog(
+        title: Text(e.toString()),
+      );
       connectionStatus = "Internet connectivity failed";
     }
 
@@ -70,7 +76,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
     print("InitConnectivity : $_connectionStatus");
     checkStatusAndGetData();
     //Check every timer duration if its connected
-    Timer.periodic(Duration(seconds: 3600), (Timer t) {
+    Timer.periodic(Duration(seconds: 60), (Timer t) {
       checkStatusAndGetData();
     });
   }
@@ -79,14 +85,15 @@ class _DonationsScreenState extends State<DonationsScreen> {
     if (_connectionStatus == "ConnectivityResult.mobile" ||
         _connectionStatus == "ConnectivityResult.wifi") {
       print("You are connected! Yaaay");
+      AlertDialog(
+        title: Text('You are connected! Yaaay'),
+      );
       //Fluttertoast.showToast(msg: "عندك انترنت");
       this.getJsonDate();
     } else {
-      Fluttertoast.showToast(
-          msg: "ما عندك انترنت",
-          backgroundColor: AppColors.primaryBackground,
-          textColor: AppColors.accentText,
-          fontSize: 14);
+      AlertDialog(
+        title: Text('No Internet Connection'),
+      );
     }
   }
 
@@ -101,7 +108,9 @@ class _DonationsScreenState extends State<DonationsScreen> {
     print("Data:" + response.body);
     print(formatter.format(parsedData['totalAmount']));
     setState(() {
-      print("Setting Numbers State");
+      AlertDialog(
+        title: Text(response.body),
+      );
       numberofDonations = formatter.format(parsedData['numberOfTransaction']);
       amount = formatter.format(parsedData['totalAmount']);
       lastupdate = new DateFormat("dd-MM-yyyy hh:mm:ss")
