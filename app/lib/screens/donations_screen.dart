@@ -1,20 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:app/utils/elements_size.dart';
 import 'package:app/screens/howtodonate_screen.dart';
 import 'package:app/widgets/faderoute.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/styles/colors.dart';
-import 'package:app/utils/shared.dart';
 import 'package:app/widgets/header_widget.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DonationsScreen extends StatefulWidget {
   @override
   _DonationsScreenState createState() => _DonationsScreenState();
 }
+
+enum MessageType { Alert, Information, Warning, Error }
 
 class _DonationsScreenState extends State<DonationsScreen> {
   Timer interval;
@@ -25,14 +27,22 @@ class _DonationsScreenState extends State<DonationsScreen> {
 
   final String url =
       "https://standforsudan.ebs-sd.com/StandForSudan/getStandForSudanStatstics";
+
   var numberofDonations = "000000000";
   var amount = "000000000";
+
   var lastupdate =
       new DateFormat("dd-MM-yyyy hh:mm:ss").format(DateTime.now()).toString();
 
+ 
+
   @override
-  void initState() {
+  Future<void> initState() {
     super.initState();
+    print("SFS: init State");
+    
+    print("Donations:$numberofDonations Amount: $amount");
+    _loadCounter();
     initConnectivity();
     _connectionSubscription =
         _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
@@ -40,10 +50,15 @@ class _DonationsScreenState extends State<DonationsScreen> {
         _connectionStatus = result.toString();
       });
     });
-    AlertDialog(
-        title: Text("Initstate : $_connectionStatus"),
-      );
-    print("Initstate : $_connectionStatus");
+    print("Connection : $_connectionStatus");
+  }
+
+  _loadCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      numberofDonations = prefs.getString('numberofDonations') ?? "000000000";
+      amount = prefs.getString('amountofDonations') ?? "000000000";
+    });
   }
 
   //For cancelling the stream subscription...
@@ -59,10 +74,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
     try {
       connectionStatus = (await _connectivity.checkConnectivity()).toString();
     } on Exception catch (e) {
-      print(e.toString());
-      AlertDialog(
-        title: Text(e.toString()),
-      );
+      print("Connection Erro: $e.toString()");
       connectionStatus = "Internet connectivity failed";
     }
 
@@ -107,12 +119,13 @@ class _DonationsScreenState extends State<DonationsScreen> {
     final formatter = new NumberFormat("#,###", "en_US");
     print("Data:" + response.body);
     print(formatter.format(parsedData['totalAmount']));
+    final prefs = await SharedPreferences.getInstance();
     setState(() {
-      AlertDialog(
-        title: Text(response.body),
-      );
       numberofDonations = formatter.format(parsedData['numberOfTransaction']);
       amount = formatter.format(parsedData['totalAmount']);
+      prefs.setString('numberofDonations', numberofDonations);
+      prefs.setString('amountofDonations', amount);
+      //_showDialog(context, MessageType.Information,response.body);
       lastupdate = new DateFormat("dd-MM-yyyy hh:mm:ss")
           .format(DateTime.now())
           .toString();
@@ -121,18 +134,21 @@ class _DonationsScreenState extends State<DonationsScreen> {
     return "Success";
   }
 
-  void onHowToButtonPressed(BuildContext context) => Navigator.push(context,FadeRoute(page:HowToDonate()));
+  void onHowToButtonPressed(BuildContext context) =>
+      Navigator.push(context, FadeRoute(page: HowToDonate()));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      body: Column(        
+      body: Column(
         children: <Widget>[
           HeaderWidget(title: 'الإحصائيات'),
           Expanded(
             child: Container(
-              width: Shared().screenWidth(context),
+              width: ElementsSize().screenWidth(context),
+              height: ElementsSize().screenWidth(context) -
+                  ElementsSize().screenWidth(context) / 5,
               decoration: BoxDecoration(
                   color: AppColors.accentText,
                   borderRadius: BorderRadius.only(
@@ -148,7 +164,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         Text(
                           'عدد التبرعات',
                           style: TextStyle(
-                            fontSize: Shared().textSize(context, 13),
+                            fontSize: ElementsSize().textSize(context, 13),
                             fontFamily: 'DIN Next LT Arabic',
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryText,
@@ -157,7 +173,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         Text(
                           numberofDonations,
                           style: TextStyle(
-                            fontSize: Shared().textSize(context, 8),
+                            fontSize: ElementsSize().textSize(context, 8),
                             fontFamily: 'DIN Next LT Arabic',
                             fontWeight: FontWeight.bold,
                             color: AppColors.secondaryText,
@@ -166,7 +182,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         Text(
                           'معاملة',
                           style: TextStyle(
-                            fontSize: Shared().textSize(context, 18),
+                            fontSize: ElementsSize().textSize(context, 18),
                             fontFamily: 'DIN Next LT Arabic',
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryText,
@@ -175,14 +191,14 @@ class _DonationsScreenState extends State<DonationsScreen> {
                       ],
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.only(top: Shared().textSize(context, 10)),
+                      padding: EdgeInsets.only(
+                          top: ElementsSize().textSize(context, 10)),
                       child: Column(
                         children: <Widget>[
                           Text(
                             'جملة التبرعات',
                             style: TextStyle(
-                              fontSize: Shared().textSize(context, 13),
+                              fontSize: ElementsSize().textSize(context, 13),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryText,
@@ -191,7 +207,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           Text(
                             amount,
                             style: TextStyle(
-                              fontSize: Shared().textSize(context, 8),
+                              fontSize: ElementsSize().textSize(context, 8),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.bold,
                               color: AppColors.secondaryText,
@@ -200,7 +216,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           Text(
                             'جنيه سوداني',
                             style: TextStyle(
-                              fontSize: Shared().textSize(context, 18),
+                              fontSize: ElementsSize().textSize(context, 18),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryText,
@@ -210,8 +226,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.only(top: Shared().textSize(context, 7)),
+                      padding: EdgeInsets.only(
+                          top: ElementsSize().textSize(context, 7)),
                       child: Column(
                         children: <Widget>[
                           Row(
@@ -220,7 +236,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                               Text(
                                 lastupdate,
                                 style: TextStyle(
-                                  fontSize: Shared().textSize(context, 32),
+                                  fontSize:
+                                      ElementsSize().textSize(context, 32),
                                   fontFamily: 'DIN Next LT Arabic',
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.primaryBackground,
@@ -229,7 +246,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                               Text(
                                 '  اخر تحديث',
                                 style: TextStyle(
-                                  fontSize: Shared().textSize(context, 32),
+                                  fontSize:
+                                      ElementsSize().textSize(context, 32),
                                   fontFamily: 'DIN Next LT Arabic',
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.primaryBackground,
@@ -240,7 +258,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                           Text(
                             'البيانات تمثل جملة مدخلات حساب القومة للسودان و تحدث كل 60 ثانية',
                             style: TextStyle(
-                              fontSize: Shared().textSize(context, 32),
+                              fontSize: ElementsSize().textSize(context, 32),
                               fontFamily: 'DIN Next LT Arabic',
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryBackground,
@@ -254,8 +272,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                         alignment: Alignment.bottomCenter,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: Shared().textSize(context, 18),
-                              vertical: Shared().textSize(context, 10)),
+                              horizontal: ElementsSize().textSize(context, 18),
+                              vertical: ElementsSize().textSize(context, 10)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -272,7 +290,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                                     'الإحصائيات',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: Shared().textSize(context, 22),
+                                      fontSize:
+                                          ElementsSize().textSize(context, 22),
                                       fontFamily: 'DIN Next LT Arabic',
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.accentText,
@@ -300,7 +319,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
                                       'كيفية التبرع؟',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontSize: Shared().textSize(context, 22),
+                                        fontSize: ElementsSize()
+                                            .textSize(context, 22),
                                         fontFamily: 'DIN Next LT Arabic',
                                         fontWeight: FontWeight.w500,
                                         color: AppColors.primaryText,
@@ -322,5 +342,15 @@ class _DonationsScreenState extends State<DonationsScreen> {
         ],
       ),
     );
+  }
+   _showDialog(BuildContext context, MessageType type, String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(type.toString()),
+            content: Text(message),
+          );
+        });
   }
 }

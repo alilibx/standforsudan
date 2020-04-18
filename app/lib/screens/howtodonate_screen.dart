@@ -1,6 +1,6 @@
 import 'package:app/screens/donations_screen.dart';
 import 'package:app/styles/colors.dart';
-import 'package:app/utils/shared.dart';
+import 'package:app/utils/elements_size.dart';
 import 'package:app/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class HowToDonate extends StatelessWidget {
           HeaderWidget(title: 'كيفية التبرع؟'),
           Expanded(
             child: Container(
-              width: Shared().screenWidth(context),
+              width: ElementsSize().screenWidth(context),
               decoration: BoxDecoration(
                   color: AppColors.accentText,
                   borderRadius: BorderRadius.only(
@@ -31,21 +31,21 @@ class HowToDonate extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: Shared().textSize(context, 18)),
+                          horizontal: ElementsSize().textSize(context, 18)),
                       child: RichText(
                         textAlign: TextAlign.right,
                         text: TextSpan(children: <TextSpan>[
                           TextSpan(
                               text: "يمكن التبرع لحساب\n",
                               style: TextStyle(
-                                  fontSize: Shared().textSize(context, 18),
+                                  fontSize: ElementsSize().textSize(context, 18),
                                   fontFamily: 'DIN Next LT Arabic',
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.primaryBackground)),
                           TextSpan(
                               text: "القومة للسودان\n",
                               style: TextStyle(
-                                fontSize: Shared().textSize(context, 10),
+                                fontSize: ElementsSize().textSize(context, 10),
                                 fontFamily: 'DIN Next LT Arabic',
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.primaryBackground,
@@ -53,7 +53,7 @@ class HowToDonate extends StatelessWidget {
                           TextSpan(
                               text: "عبر قنوات الدفع المختلفة\n",
                               style: TextStyle(
-                                fontSize: Shared().textSize(context, 18),
+                                fontSize: ElementsSize().textSize(context, 18),
                                 fontFamily: 'DIN Next LT Arabic',
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.primaryBackground,
@@ -63,8 +63,8 @@ class HowToDonate extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: Shared().textSize(context, 18),
-                          vertical: Shared().textSize(context, 18)),
+                          horizontal: ElementsSize().textSize(context, 18),
+                          vertical: ElementsSize().textSize(context, 18)),
                       child: RichText(
                         textAlign: TextAlign.right,
                         text: TextSpan(children: <TextSpan>[
@@ -72,7 +72,7 @@ class HowToDonate extends StatelessWidget {
                               text:
                                   "تطبيقات الدفع الالكتروني •\nتطبيقات البنوك •\nنوافذ البنوك •\nنقاط البيع •\nشركات الاتصالات •\n خدمات الرسائل (سودابان) •\nالصرافات الآلية •\n نظام الدفع عبر الموبايل •",
                               style: TextStyle(
-                                  fontSize: Shared().textSize(context, 20),
+                                  fontSize: ElementsSize().textSize(context, 20),
                                   fontFamily: 'DIN Next LT Arabic',
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.primaryText)),
@@ -84,8 +84,8 @@ class HowToDonate extends StatelessWidget {
                         alignment: Alignment.bottomCenter,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: Shared().textSize(context, 18),
-                              vertical: Shared().textSize(context, 10)),
+                              horizontal: ElementsSize().textSize(context, 18),
+                              vertical: ElementsSize().textSize(context, 10)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -110,7 +110,7 @@ class HowToDonate extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize:
-                                            Shared().textSize(context, 22),
+                                            ElementsSize().textSize(context, 22),
                                         fontFamily: 'DIN Next LT Arabic',
                                         fontWeight: FontWeight.w500,
                                         color: AppColors.primaryText,
@@ -132,7 +132,7 @@ class HowToDonate extends StatelessWidget {
                                     'كيفية التبرع؟',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: Shared().textSize(context, 22),
+                                      fontSize: ElementsSize().textSize(context, 22),
                                       fontFamily: 'DIN Next LT Arabic',
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.accentText,
