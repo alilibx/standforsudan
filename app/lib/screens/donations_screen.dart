@@ -33,14 +33,14 @@ class _DonationsScreenState extends State<DonationsScreen> {
   var numberofDonations = "000000000";
   var amount = "000000000";
 
-  var numberofDonations_usd = "000000000";
-  var amount_sdg = "000000000";
+  //var numberofDonations_usd = "000000000";
+  //var amount_usd = "000000000";
 
   var lastupdate =
       new DateFormat("dd-MM-yyyy hh:mm:ss").format(DateTime.now()).toString();
 
   @override
-  Future<void> initState() {
+  initState() {
     super.initState();
     print("SFS: init State");
 
@@ -349,16 +349,5 @@ class _DonationsScreenState extends State<DonationsScreen> {
         ),
       ),
     );
-  }
-
-  _showDialog(BuildContext context, MessageType type, String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text(type.toString()),
-            content: Text(message),
-          );
-        });
   }
 }
