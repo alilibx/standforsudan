@@ -1,5 +1,5 @@
 import 'package:app/screens/donations_screen.dart';
-import 'package:app/styles/colors.dart';
+import 'package:app/utils/colors.dart';
 import 'package:app/utils/elements_size.dart';
 import 'package:app/widgets/header_widget.dart';
 import 'package:flutter/material.dart';

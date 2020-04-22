@@ -4,7 +4,7 @@ import 'package:app/utils/elements_size.dart';
 import 'package:app/screens/howtodonate_screen.dart';
 import 'package:app/widgets/faderoute.dart';
 import 'package:http/http.dart' as http;
-import 'package:app/styles/colors.dart';
+import 'package:app/utils/colors.dart';
 import 'package:app/widgets/header_widget.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
