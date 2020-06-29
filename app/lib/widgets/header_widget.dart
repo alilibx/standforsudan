@@ -11,7 +11,6 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     print(ElementsSize().screenHeight(context).toString());
     return Container(
-      height: ElementsSize().screenHeight(context)/5.5,
       width: ElementsSize().screenWidth(context),
       child: Column(
         children: <Widget>[
@@ -51,8 +50,7 @@ class HeaderWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(
-                top: (ElementsSize().screenHeight(context) / 4) / 12),
+            padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
                 title,

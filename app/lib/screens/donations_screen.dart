@@ -144,64 +144,28 @@ class _DonationsScreenState extends State<DonationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            HeaderWidget(title: 'الإحصائيات'),
-            Expanded(
-              child: Container(
-                width: ElementsSize().screenWidth(context),
-                height: ElementsSize().screenWidth(context) -
-                    ElementsSize().screenWidth(context) / 5,
-                decoration: BoxDecoration(
-                    color: AppColors.accentText,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30.0),
-                      topRight: Radius.circular(30.0),
-                    )),
-                child: Padding(
-                  padding: EdgeInsets.only(top: 15.0),
-                  child: Column(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            'عدد التبرعات',
-                            style: TextStyle(
-                              fontSize: ElementsSize().textSize(context, 13),
-                              fontFamily: 'DIN Next LT Arabic',
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.primaryText,
-                            ),
-                          ),
-                          Text(
-                            numberofDonations,
-                            style: TextStyle(
-                              fontSize: ElementsSize().textSize(context, 8),
-                              fontFamily: 'DIN Next LT Arabic',
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.secondaryText,
-                            ),
-                          ),
-                          Text(
-                            'معاملة',
-                            style: TextStyle(
-                              fontSize: ElementsSize().textSize(context, 18),
-                              fontFamily: 'DIN Next LT Arabic',
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.primaryText,
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: ElementsSize().textSize(context, 10)),
-                        child: Column(
+        child: Container(
+          color: AppColors.primaryBackground,
+          child: Column(
+            children: <Widget>[
+              HeaderWidget(title: 'الإحصائيات'),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.accentText,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0),
+                      )),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 15.0),
+                    child: Column(
+                      children: <Widget>[
+                        Column(
                           children: <Widget>[
                             Text(
-                              'جملة التبرعات',
+                              'عدد التبرعات',
                               style: TextStyle(
                                 fontSize: ElementsSize().textSize(context, 13),
                                 fontFamily: 'DIN Next LT Arabic',
@@ -210,7 +174,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                               ),
                             ),
                             Text(
-                              amount,
+                              numberofDonations,
                               style: TextStyle(
                                 fontSize: ElementsSize().textSize(context, 8),
                                 fontFamily: 'DIN Next LT Arabic',
@@ -219,7 +183,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
                               ),
                             ),
                             Text(
-                              'جنيه سوداني',
+                              'معاملة',
                               style: TextStyle(
                                 fontSize: ElementsSize().textSize(context, 18),
                                 fontFamily: 'DIN Next LT Arabic',
@@ -229,123 +193,162 @@ class _DonationsScreenState extends State<DonationsScreen> {
                             )
                           ],
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: ElementsSize().textSize(context, 7)),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  lastupdate,
-                                  style: TextStyle(
-                                    fontSize:
-                                        ElementsSize().textSize(context, 32),
-                                    fontFamily: 'DIN Next LT Arabic',
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.primaryBackground,
-                                  ),
-                                ),
-                                Text(
-                                  '  اخر تحديث',
-                                  style: TextStyle(
-                                    fontSize:
-                                        ElementsSize().textSize(context, 32),
-                                    fontFamily: 'DIN Next LT Arabic',
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.primaryBackground,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              'البيانات تمثل جملة مدخلات حساب القومة للسودان و تحدث كل 60 ثانية',
-                              style: TextStyle(
-                                fontSize: ElementsSize().textSize(context, 32),
-                                fontFamily: 'DIN Next LT Arabic',
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryBackground,
-                              ),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 20.0,
                         ),
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    ElementsSize().textSize(context, 18),
-                                vertical: ElementsSize().textSize(context, 10)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  height: 50.0,
-                                  width: 120.0,
-                                  decoration: BoxDecoration(
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                'جملة التبرعات',
+                                style: TextStyle(
+                                  fontSize:
+                                      ElementsSize().textSize(context, 13),
+                                  fontFamily: 'DIN Next LT Arabic',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.primaryText,
+                                ),
+                              ),
+                              Text(
+                                amount,
+                                style: TextStyle(
+                                  fontSize: ElementsSize().textSize(context, 8),
+                                  fontFamily: 'DIN Next LT Arabic',
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.secondaryText,
+                                ),
+                              ),
+                              Text(
+                                'جنيه سوداني',
+                                style: TextStyle(
+                                  fontSize:
+                                      ElementsSize().textSize(context, 18),
+                                  fontFamily: 'DIN Next LT Arabic',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.primaryText,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    lastupdate,
+                                    style: TextStyle(
+                                      fontSize:
+                                          ElementsSize().textSize(context, 32),
+                                      fontFamily: 'DIN Next LT Arabic',
+                                      fontWeight: FontWeight.w500,
                                       color: AppColors.primaryBackground,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(30.0))),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'الإحصائيات',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: ElementsSize()
-                                            .textSize(context, 22),
-                                        fontFamily: 'DIN Next LT Arabic',
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.accentText,
-                                      ),
                                     ),
                                   ),
+                                  Text(
+                                    '  اخر تحديث',
+                                    style: TextStyle(
+                                      fontSize:
+                                          ElementsSize().textSize(context, 32),
+                                      fontFamily: 'DIN Next LT Arabic',
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.primaryBackground,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                'البيانات تمثل جملة مدخلات حساب القومة للسودان و تحدث كل 60 ثانية',
+                                style: TextStyle(
+                                  fontSize:
+                                      ElementsSize().textSize(context, 32),
+                                  fontFamily: 'DIN Next LT Arabic',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.primaryBackground,
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    onHowToButtonPressed(context);
-                                  },
-                                  child: Container(
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 20.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
                                     height: 50.0,
                                     width: 120.0,
                                     decoration: BoxDecoration(
-                                        color: AppColors.accentText,
-                                        border: Border.all(
-                                            color: AppColors.primaryText,
-                                            width: 3.0),
+                                        color: AppColors.primaryBackground,
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(30.0))),
                                     child: Padding(
-                                      padding: EdgeInsets.all(5.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Text(
-                                        'كيفية التبرع؟',
+                                        'الإحصائيات',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontSize: ElementsSize()
-                                              .textSize(context, 22),
+                                          fontSize: 14.0,
                                           fontFamily: 'DIN Next LT Arabic',
                                           fontWeight: FontWeight.w500,
-                                          color: AppColors.primaryText,
+                                          color: AppColors.accentText,
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                  GestureDetector(
+                                    onTap: () {
+                                      onHowToButtonPressed(context);
+                                    },
+                                    child: Container(
+                                      height: 50.0,
+                                      width: 120.0,
+                                      decoration: BoxDecoration(
+                                          color: AppColors.accentText,
+                                          border: Border.all(
+                                              color: AppColors.primaryText,
+                                              width: 3.0),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(30.0))),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(7.0),
+                                        child: Text(
+                                          'كيفية التبرع؟',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            fontFamily: 'DIN Next LT Arabic',
+                                            fontWeight: FontWeight.w500,
+                                            color: AppColors.primaryText,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
